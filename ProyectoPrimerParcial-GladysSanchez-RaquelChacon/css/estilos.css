@@ -1,0 +1,253 @@
+body {
+margin: 0;
+font-family: 'Inter', sans-serif;
+background: #f5f7fa;
+color: #333;
+display: flex;
+}
+.logo-animado {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 12px;
+padding: 24px 12px;
+background: rgba(255,255,255,0.0); /* transparente por defecto */
+}
+/* SVG responsivo */
+.svg-logo {
+width: 220px;
+height: auto;
+overflow: visible;
+}
+/* Estilos del trazo de la cruz */
+.cross-stroke {
+stroke: #1266d6;
+stroke-width: 8;
+stroke-linecap: round;
+stroke-linejoin: round;
+stroke-dasharray: 900;
+stroke-dashoffset: 0;
+transition:stroke 0.3s;
+
+fill: none;
+}
+/* Estilos para las líneas tipo circuito */
+.circuit-stroke {
+stroke: #1e90ff;
+stroke-width: 5;
+stroke-linecap: round;
+stroke-dasharray: 200;
+stroke-dashoffset: 200;
+
+}
+/* Nodos (círculos que pulsan) */
+.node {
+fill: #1e90ff;
+transform-origin: center;
+transform-box: fill-box;
+opacity: 0;
+animation: nodePulse 1.2s ease forwards;
+animation-delay: 1.5s;
+}
+.logo-texto.linea1 { font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; }
+.logo-texto.linea2 { font-weight: 700; font-size: 1.2rem; letter-spacing: 1.5px; }
+.logo-texto.linea3 { font-weight: 500; font-size: 0.85rem; color:#234e7a;}
+/* Animaciones */
+@keyframes drawCross {
+to { stroke-dashoffset: 0; }
+}
+@keyframes drawCircuit {
+to { stroke-dashoffset: 0; }
+}
+@keyframes nodePulse {
+0% { transform: scale(0.2); opacity: 0; }
+60% { transform: scale(1.25); opacity: 1; }
+100% { transform: scale(1); opacity: 1; }
+}
+/* Hacer que la animación se reproduzca de nuevo al pasar el mouse */
+.logo-animado:hover .circuit-stroke,
+.logo-animado:focus .circuit-stroke {
+animation: drawCircuit 0.9s ease forwards;
+stroke: #0f8ef2;
+}
+.logo-animado:hover.node,
+.logo-animado:focus.node {
+    animation: drawCross 1.6s ease forwards;
+}
+/* Adaptaciones responsive para logo */
+@media (max-width: 480px) {
+.svg-logo { width: 160px; }
+.logo-texto .linea2 { font-size: 1rem; }
+}
+/* ================================
+SIDEBAR
+================================ */
+.sidebar {
+width: 260px;
+background: #0d1b2a;
+color: #fff;
+height: 100vh;
+position: fixed;
+padding: 20px;
+box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+}
+.logo {
+text-align: center;
+font-weight: 700;
+font-size: 1.6rem;
+marginbottom: 2px;
+color: #52b2ff;
+}
+
+
+.titulo{
+    font-family: 'Montserrat', sans-serif;
+text-align: center;
+color: #1505f5ec;
+padding: 20px;
+font-size: 2rem;
+}
+.menu {
+list-style: none;
+padding: 0;
+}
+.menu li {
+margin-bottom: 12px;
+}
+.menu a {
+display: block;
+padding: 12px;
+color: #d1d5db;
+text-decoration: none;
+border-radius: 8px;
+transition: 0.3s;
+font-weight: 500;
+}
+.menu a:hover {
+background: #17324a;
+color: #fff;
+}
+.menu .activo {
+background: #1b263b;
+color: #fff;
+}
+/* SUBMENÚ */
+.submenu-titulo {
+color: #9bbad1;
+cursor: pointer;
+}
+.submenu-items {
+list-style: none;
+padding-left: 15px;
+display: none;
+}
+.submenu:hover .submenu-items {
+display: block;
+}
+/* ================================
+TOP BAR
+================================ */
+.topbar {
+background: #ffffff;
+padding: 20px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.topbar h1 {
+    text-align: center;
+margin: 0;
+font-size: 1.6rem;
+font-weight: 600;
+
+}
+/* ================================
+CONTENIDO PRINCIPAL
+================================ */
+.contenido {
+margin-left: 260px;
+padding: 40px;
+flex: 1;
+}
+/*.img-portada {
+width: 100%;
+max-height: 300px;
+object-fit: cover;
+border-bottom: 5px solid #fff;
+}*/
+/* TARJETAS (SECCIONES) */
+.tarjeta {
+background: #fff;
+padding: 30px;
+margin-bottom: 30px;
+border-radius: 14px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+transition: transform 0.2s;
+}
+.tarjeta:hover {
+transform: translateY(-4px);
+}
+/* TÍTULOS */
+h2 {
+margin-top: 0;
+color: #1b263b;
+font-weight: 600;
+}
+/* LISTAS */
+.tarjeta ul {
+padding-left: 20px;
+}
+/* ================================
+FOOTER
+================================ */
+#footer {
+margin-top: 40px;
+text-align: center;
+color: #555;
+padding: 20px 0;
+}
+.input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px;
+    background: #1266d6;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #0e50aa;
+}
+
+
+.btn-calcular {
+    background: #1e90ff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-top: 15px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(30,144,255,0.3);
+}
+
+.btn-calcular:hover {
+    background: #1266d6;
+}
+
+.resultado {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
